@@ -1,0 +1,80 @@
+html, body {
+	font-family: 'Arial';
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	color: #020202;
+}
+.grid_content{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    border: 2px solid rgb(8, 8, 8);
+    border-radius: 10px;
+    margin: 2%;
+    grid-gap: 10px;
+    background-color: rgb(183, 196, 196);
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 1300px) {
+    .hed{
+        display: grid;
+        grid-template-columns: 250px 1fr 1fr 1fr;
+        background-color: rgb(153 186 193);
+        margin: 1%;
+    }
+}
+@media (max-width: 1300px) {
+    .hed{
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        background-color: rgb(153 186 193);
+        margin: 1%;
+    }
+}
+@media (max-width: 700px) {
+    .hed{
+        display: grid;
+        grid-template-columns: 1fr;
+        background-color: rgb(153 186 193);
+        margin: 1%;
+    }
+    img{
+        width: 50%;
+        height: 80%;
+        margin-top: 8%;
+    }
+}
+
+.block{
+    border: 1px solid; /* Обводим чёрным пунктиром */ /* Скругляем углы на 10 пикселей */
+    margin-top: 10;
+    text-align: center; /* Контент размещаем в центре по горизонтали */
+    font-size: larger;
+}
+
+    
+
+
+.back{
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.str_resume{
+    text-align: center;
+    font-size:25px;
+}
+
+.name-r{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 1px solid;
+}

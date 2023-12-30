@@ -1,0 +1,63 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="{% static 'main/css/style.css' %}" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'home' %}"><img class="back" src="{% static 'main/images/icons8-двойная-стрелка-влево-50.png' %}" width="50" height="50" alt="" ></a>
+    
+    <div class="grid_content">
+        <div class="hed">
+            <div class="block">
+                    <img src="{% static 'main/images/h.jpg' %}" alt="">
+            </div>
+            <div class="block">
+                <h3>
+                    {{post.name}}
+                    <br>
+                    {{post.date}}
+                    <br>
+                    {{post.city}}
+                </h3>
+            </div>
+            <div class="block">
+                <h3>Должность: {{post.profession}}</h3>
+                <h3>Желаемая зарплата: от {{post.payment}}</h3> 
+            </div>
+            <div class="block">
+                <h3>Телефон: {{post.telephon_number}}</h3>
+                <h3>Почта: {{post.emeil}}</h3>
+            </div>
+        </div>
+        <div class="block">
+            <h3>
+            Профессиональные навыки:
+            {{post.competencies|safe}}
+            </h3>
+            
+        </div>             
+        <div class="block">
+            <h3>
+                Увлечения:
+                <br>
+                Спорт:
+                <br>
+                Плавание
+                <br>
+                Футбол
+                <br> 
+                Бокс
+                <br>
+                Чтение книг
+            </h3>
+        </div>
+    </div>    
+    
+</body>
+</html>

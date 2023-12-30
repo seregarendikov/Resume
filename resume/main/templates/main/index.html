@@ -1,0 +1,30 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="{% static 'main/css/style.css' %}" rel="stylesheet" />
+    <title>Резюме</title>
+</head>
+<body>
+    <div class="content-index">
+        <div class="str_resume"><h1>Резюме</h1>
+            <div class="name-r">
+
+                {% for i in data %}
+                
+                <a href="{% url 'hanter' i.id %}"><h3>{{i.name}}</h3></a>
+                {% if not forloop.last %}
+               
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
