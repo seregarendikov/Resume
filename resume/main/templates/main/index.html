@@ -14,9 +14,9 @@
         <div class="str_resume"><h1>Резюме</h1>
             <div class="name-r">
 
-                {% for i in data %}
+                {% for i in posts %}
                 
-                <a href="{% url 'hanter' i.id %}"><h3>{{i.name}}</h3></a>
+                <a href="{{ i.get_absolute_url }}"><h3>{{i.name}}</h3></a>
                 {% if not forloop.last %}
                
                 {% endif %}

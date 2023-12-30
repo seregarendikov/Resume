@@ -7,5 +7,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='home'),
-    path('hanter/<int:h_id>', views.hanter, name='hanter'),
+    path('hanter/<slug:h_slug>', views.hanter, name='hanter'),
 ]

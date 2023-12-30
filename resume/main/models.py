@@ -1,9 +1,12 @@
+
 from django.db import models
+from django.urls import reverse
 
 
 class Resume(models.Model):
 
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, db_index=True, unique=True)
     date = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     telephon_number = models.CharField(max_length=255)
@@ -14,3 +17,7 @@ class Resume(models.Model):
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
+
+
+    def get_absolute_url(self):
+        return reverse('hanter', kwargs={'h_slug': self.slug})

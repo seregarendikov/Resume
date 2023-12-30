@@ -5,18 +5,19 @@ from .models import Resume
 
 
 
-data = [{'id': 1, 'name': 'Рендиков Сергей Сергеевич', 'date': '09.03.1986', 'city': 'Omsk'},
-        {'id': 2, 'name': 'Иванов Иван Иванович', 'date': '31.04.2000', 'city': 'Красноярск'},
-        {'id': 3, 'name': 'Сидоров Александр Дитриевич', 'date': '15.03.1980', 'city': 'Санкт-Петербург'},]
+data = [{'id': 1, 'name': 'Рендиков Сергей Сергеевич', 'date': '09.03.1986', 'city': 'Omsk', 'slug':'sergey-rendikov'},
+        {'id': 2, 'name': 'Иванов Иван Иванович', 'date': '31.04.2000', 'city': 'Красноярск', 'slug':'sergey-rendikov'},
+        {'id': 3, 'name': 'Сидоров Александр Дитриевич', 'date': '15.03.1980', 'city': 'Санкт-Петербург', 'slug':'sergey-rendikov'},]
 
 
 def index(request):
-    return render(request, 'main/index.html', {'data': data})
+    posts = Resume.objects.filter(is_published=1)
+    return render(request, 'main/index.html', {'data': data, 'posts':posts})
 
 
 
-def hanter(request, h_id):
-    post = get_object_or_404(Resume, id=h_id)
+def hanter(request, h_slug):
+    post = get_object_or_404(Resume, slug=h_slug)
     return render(request, 'main/hanter.html', {'data': data, 'post': post})
 
 
