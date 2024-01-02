@@ -1,24 +1,35 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, render
 
-from .models import Resume
+from .models import Categories, Resume
 
 
-
-data = [{'id': 1, 'name': 'Рендиков Сергей Сергеевич', 'date': '09.03.1986', 'city': 'Omsk', 'slug':'sergey-rendikov'},
-        {'id': 2, 'name': 'Иванов Иван Иванович', 'date': '31.04.2000', 'city': 'Красноярск', 'slug':'sergey-rendikov'},
-        {'id': 3, 'name': 'Сидоров Александр Дитриевич', 'date': '15.03.1980', 'city': 'Санкт-Петербург', 'slug':'sergey-rendikov'},]
 
 
 def index(request):
-    posts = Resume.objects.filter(is_published=1)
-    return render(request, 'main/index.html', {'data': data, 'posts':posts})
+    posts = Resume.objects.all()
+    categor = Categories.objects.all()
+    # cat = Categories.objects.all()
+    return render(request, 'main/index.html', {'posts':posts, 'category': categor})
 
 
 
 def hanter(request, h_slug):
     post = get_object_or_404(Resume, slug=h_slug)
-    return render(request, 'main/hanter.html', {'data': data, 'post': post})
+    return render(request, 'main/hanter.html', {'post': post})
+
+
+def show_category(request, cat_slug):
+    category = get_object_or_404(Categories, slug=cat_slug)
+    posts = Resume.objects.filter(cat_id=category.pk)
+
+    data = {
+        'title': f'Резюме: {category.name}',
+        'posts': posts,
+        'cat_selected': category.pk,
+    }
+    return render(request, 'main/index.html', context=data)
+
 
 
 def page_not_found(request, exception):

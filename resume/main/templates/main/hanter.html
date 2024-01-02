@@ -14,9 +14,15 @@
     
     <div class="grid_content">
         <div class="hed">
+            
             <div class="block">
+                {% if post.photo %}
                     <img src="{% static 'main/images/h.jpg' %}" alt="">
+                {% else %}
+                Здесь будет фото    
+                {% endif %}    
             </div>
+            
             <div class="block">
                 <h3>
                     {{post.name}}

@@ -10,13 +10,24 @@
     <title>Резюме</title>
 </head>
 <body>
+    <div class="str_resume"><h1>{{title}}</h1>
     <div class="content-index">
-        <div class="str_resume"><h1>Резюме</h1>
+            <div>
+                <h3>
+                    <a href="{% url 'home' %}">Все категории</a>
+                    <br><br>
+                    {% for p in category %}
+                        
+                    <a href="{{ p.get_absolute_url }}">{{p.name}}</a>
+                    <br><br>
+                    {% endfor %}
+                </h3>
+            </div>
             <div class="name-r">
 
                 {% for i in posts %}
                 
-                <a href="{{ i.get_absolute_url }}"><h3>{{i.name}}</h3></a>
+                <a href="{{ i.get_absolute_url }}"><h3>{{i.name}}-{{i.profession}}</h3></a>
                 {% if not forloop.last %}
                
                 {% endif %}

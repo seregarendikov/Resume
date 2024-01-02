@@ -6,6 +6,12 @@ html, body {
 	width: 100%;
 	color: #020202;
 }
+.content-index {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    
+}
+
 .grid_content{
     display: grid;
     grid-template-columns: 1fr;
@@ -74,7 +80,5 @@ img{
 }
 
 .name-r{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    border: 1px solid;
+    border: 3px solid black;
 }
