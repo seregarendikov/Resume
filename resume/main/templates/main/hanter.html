@@ -17,7 +17,7 @@
             
             <div class="block">
                 {% if post.photo %}
-                    <img src="{% static 'main/images/h.jpg' %}" alt="">
+                    <img src="{{post.photo.url}}" alt="">
                 {% else %}
                 Здесь будет фото    
                 {% endif %}    

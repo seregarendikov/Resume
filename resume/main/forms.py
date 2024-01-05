@@ -21,7 +21,7 @@ class AddPostForm(forms.ModelForm):
     
 
         model = Resume
-        fields = ['name', 'slug', 'date', 'city', 'telephon_number', 'emeil', 'profession', 'payment', 'competencies', 'is_published', 'cat']
+        fields = ['name', 'slug', 'date', 'city', 'telephon_number', 'emeil', 'profession', 'payment', 'competencies', 'photo', 'is_published', 'cat']
         labels = {'slug': 'URL'}
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-input'}),

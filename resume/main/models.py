@@ -19,6 +19,7 @@ class Resume(models.Model):
     is_published = models.BooleanField(default=True)
 
     cat = models.ForeignKey('Categories', on_delete=models.PROTECT)
+    photo = models.ImageField(upload_to="photos/%Y/%m/%d/", default=None, blank=True, null=True, verbose_name="Фото")
 
     def __str__(self):
         return self.name
@@ -47,3 +48,7 @@ class Categories(models.Model):
     class Meta:
         verbose_name = 'Категории'
         verbose_name_plural = 'Категории'
+
+
+class UploadFiles(models.Model):
+    file = models.FileField(upload_to='uploads_model')
