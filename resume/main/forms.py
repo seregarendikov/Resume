@@ -28,4 +28,5 @@ class AddPostForm(forms.ModelForm):
             'competencies': forms.Textarea(attrs={'cols': 60, 'rows': 10}),
         }
 
-    
+class UploadFileForm(forms.Form):
+    file = forms.ImageField(label="Изображение")   

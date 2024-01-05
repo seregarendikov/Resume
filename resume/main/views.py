@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, redirect, render
-
-from .forms import AddPostForm
+import uuid
+from .forms import AddPostForm, UploadFileForm
 
 from .models import Categories, Resume
 
@@ -55,8 +55,29 @@ def addpage(request):
     return render(request, 'main/addpage.html', {'menu': menu, 'title': 'Добавление резюме', 'form': form})
 
 
+def handle_uploaded_file(f):
+    name = f.name
+    ext = ''
+ 
+    if '.' in name:
+        ext = name[name.rindex('.'):]
+        name = name[:name.rindex('.')]
+ 
+    suffix = str(uuid.uuid4())
+    with open(f"uploads/{name}_{suffix}{ext}", "wb+") as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
 def about(request):
-    return HttpResponse('О сайте')
+    if request.method == "POST":
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(form.cleaned_data['file'])
+    else:
+        form = UploadFileForm()
+ 
+    return render(request, 'main/about.html', {'title': 'О сайте', 'menu': menu, 'form': form})
+ 
 
 
 def contact(request):
