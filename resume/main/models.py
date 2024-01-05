@@ -22,6 +22,10 @@ class Resume(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = 'Резюме'
+        verbose_name_plural = 'Резюме'
 
 
     def get_absolute_url(self):
@@ -39,3 +43,7 @@ class Categories(models.Model):
 
     def get_absolute_url(self):
         return reverse('category', kwargs={'cat_slug': self.slug})    
+    
+    class Meta:
+        verbose_name = 'Категории'
+        verbose_name_plural = 'Категории'

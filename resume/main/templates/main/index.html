@@ -1,15 +1,10 @@
-{% load static %}
+{% extends 'base.html' %}
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" href="{% static 'main/css/style.css' %}" rel="stylesheet" />
-    <title>Резюме</title>
-</head>
-<body>
+
+
+{% block content %}
+  
     <div class="str_resume"><h1>{{title}}</h1>
     <div class="content-index">
             <div>
@@ -35,7 +30,6 @@
             </div>
         </div>
     </div>
+{% endblock %}    
 
     
-</body>
-</html>

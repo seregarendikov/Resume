@@ -6,6 +6,30 @@ html, body {
 	width: 100%;
 	color: #020202;
 }
+.header{
+    display: grid;
+    background-color: #020202;
+    grid-template-columns: 15% 20% 15% 1fr;
+    height: 200px;
+    color: aliceblue;
+    font-size: 30px;
+    text-align: center;
+    
+    
+}
+
+li{
+    margin-top: 80px;
+    list-style-type: none;
+
+.a{
+    text-decoration: none;
+    color: white;
+}
+
+
+}
+
 .content-index {
     display: grid;
     grid-template-columns: 1fr 2fr;
