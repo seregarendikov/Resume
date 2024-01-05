@@ -44,11 +44,12 @@ def addpage(request):
         form = AddPostForm(request.POST)
         if form.is_valid():
             #print(form.cleaned_data)
-            try:
-                Resume.objects.create(**form.cleaned_data)
-                return redirect('home')
-            except:
-                form.add_error(None, 'Ошибка добавления поста')
+            # try:
+            #     Resume.objects.create(**form.cleaned_data)
+            #     return redirect('home')
+            # except:
+            #     form.add_error(None, 'Ошибка добавления поста')
+            form.save()
     else:
         form = AddPostForm()
     return render(request, 'main/addpage.html', {'menu': menu, 'title': 'Добавление резюме', 'form': form})
