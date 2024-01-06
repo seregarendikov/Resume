@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, redirect, render
 import uuid
 from .forms import AddPostForm, UploadFileForm
-
+from django.core.paginator import Paginator
 from .models import Categories, Resume, UploadFiles
 
 
@@ -15,9 +15,15 @@ menu = [{'title': "О сайте", 'url_name': 'about'},
 
 
 def index(request):
-    posts = Resume.objects.all()
     category = Categories.objects.all()
-    return render(request, 'main/index.html', {'posts':posts, 'category': category, 'menu': menu})
+
+    contact_list = Resume.objects.all()
+    paginator = Paginator(contact_list, 3)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'main/index.html', {'category': category, 'menu': menu, 'page_obj': page_obj})
 
 
 
@@ -28,11 +34,15 @@ def hanter(request, h_slug):
 
 def show_category(request, cat_slug):
     category = get_object_or_404(Categories, slug=cat_slug)
-    posts = Resume.objects.filter(cat_id=category.pk)
+    contact_list = Resume.objects.filter(cat_id=category.pk)
+    paginator = Paginator(contact_list, 3)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     data = {
         'title': f'Резюме: {category.name}',
-        'posts': posts,
+        'page_obj': page_obj,
         'menu': menu,
     }
     return render(request, 'main/index.html', context=data)
@@ -54,16 +64,15 @@ def addpage(request):
 
 
 def about(request):
-    if request.method == "POST":
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-#            handle_uploaded_file(form.cleaned_data['file'])
-            fp = UploadFiles(file=form.cleaned_data['file'])
-            fp.save()
-    else:
-        form = UploadFileForm()
- 
-    return render(request, 'main/about.html', {'title': 'О сайте', 'menu': menu, 'form': form})
+    
+    contact_list = Resume.objects.all()
+    paginator = Paginator(contact_list, 3)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'main/about.html',
+                  {'title': 'О сайте', 'page_obj': page_obj,  'menu': menu})
  
 
 

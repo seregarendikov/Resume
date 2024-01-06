@@ -20,16 +20,26 @@
             </div>
             <div class="name-r">
 
-                {% for i in posts %}
+                {% for item in page_obj %}
                 
-                <a href="{{ i.get_absolute_url }}"><h3>{{i.name}}-{{i.profession}}</h3></a>
+                <a href="{{ item.get_absolute_url }}"><h3>{{item.name}}-{{item.profession}}</h3></a>
                 {% if not forloop.last %}
                
                 {% endif %}
+
                 {% endfor %}
+                <div class="paginat">
+                    {% for p in page_obj.paginator.page_range %}
+                    <div>
+                        <a href="?page={{ p }}">{{ p }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
-{% endblock %}    
+
+{% endblock %} 
+   
 
     
