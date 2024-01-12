@@ -9,31 +9,53 @@ html, body {
 .header{
     display: grid;
     background-color: #020202;
-    grid-template-columns: 15% 20% 15% 1fr;
-    height: 200px;
+    grid-template-columns: auto auto auto 1fr;
     color: aliceblue;
     font-size: 30px;
     text-align: center;
-    
-    
+    height: 130px;
+    }
+
+.last{
+    text-align: right;
+    margin-right: 5%;
+}
+li{
+    list-style-type: none;
 }
 
-li{
-    margin-top: 80px;
-    list-style-type: none;
+.li-menu{
+    margin-left: 30px;
+}
 
 .a{
     text-decoration: none;
     color: white;
+    padding-left: 30px;
 }
 
-
+.div-menu{
+    border: 3px solid #ddd;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .content-index {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    grid-gap: 5px;
     
+}
+
+.content-index a {
+    text-decoration: none;
+    
+}
+
+.left-category{
+    height: 100%;
+    border: 3px solid black;
+    background-color: antiquewhite;
 }
 
 .grid_content{
@@ -107,8 +129,14 @@ img{
     border: 3px solid black;
 }
 
+
+
 .paginat{
     display: flex;
     text-align: center;
     margin-left: 40%;
+}
+
+.paginat div{
+    margin-left: 5px;
 }

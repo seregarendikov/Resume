@@ -4,7 +4,7 @@ import uuid
 from .forms import AddPostForm, UploadFileForm
 from django.core.paginator import Paginator
 from .models import Categories, Resume, UploadFiles
-
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 menu = [{'title': "О сайте", 'url_name': 'about'},
@@ -48,7 +48,7 @@ def show_category(request, cat_slug):
     return render(request, 'main/index.html', context=data)
 
 
-
+@login_required
 def addpage(request):
     if request.method == 'POST':
         form = AddPostForm(request.POST, request.FILES)
@@ -62,7 +62,7 @@ def addpage(request):
 
 
 
-
+@login_required
 def about(request):
     
     contact_list = Resume.objects.all()
